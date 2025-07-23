@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: gray;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+button {
+  padding: 12.5px;
+  border-radius: 25px;
+  color: white;
+  background-color: rgb(30, 30, 30);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.topbar {
+  width: calc(100vw);
+  height: 70px;
+  background: linear-gradient(to bottom, #d9c69b 0%, #bfa86f 50%, #a38643 100%);
+  border-bottom: 8px solid #7a6841;
+  box-shadow:
+    inset 0 5px 8px rgba(255, 255, 255, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 0 15px;
+  font-family: 'Georgia', serif;
+  color: #3e2f10;
+  text-shadow: 1px 1px 0 #fff8dc;
+  box-sizing: border-box;
+}
+
+.topbar::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background:
+    repeating-linear-gradient(
+      to right,
+      #bfa86f,
+      #bfa86f 10px,
+      #a38643 10px,
+      #a38643 14px,
+      #bfa86f 14px,
+      #bfa86f 20px
+    );
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.4);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 1001;
+}
+
+.topbar button {
+  background-color: transparent;
+  border: none;
+  color: #3e2f10;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #fff8dc;
+}
+
+.topbar button:hover {
+  background-color: #a38643;
+  color: #fff8dc;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 70px; /* onder topbar */
+  bottom: 0;
+  width: 75px;
+  background: linear-gradient(
+    to bottom,
+    #8b7d6b,
+    #a3907a,
+    #8b7d6b
+  );
+  box-shadow: inset 2px 0 5px rgba(255, 255, 255, 0.2),
+              inset -2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Vertikale grooves */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 10px;
+  right: 10px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.15) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Top “capital” */
+.sidebar.left-sidebar::after,
+.sidebar.right-sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(to bottom, #c2b59b, #8b7d6b);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.main-content {
+  margin-left: 75px; /* ruimte voor sidebar */
+  padding-top: 80px;                  
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.quote-below-nav {
+  max-width: 900px;
+  margin: 0 auto 20px auto; 
+  padding: 10px 20px;
+  font-style: italic;
+  text-align: center;
+  border-bottom: 2px solid #444;
+  background-color: #e0e0e0;
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 25px;
+}
+
+@media (max-width: 600px) {
+  .education-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+strong, b {
+  font-weight: bold;
+  font-size: 1.4em; 
+}
+
+/* Tijdlijn wrapper */
+.timeline-wrapper {
+  padding: 60px 20px;
+  max-width: calc(100% - 75px); /* rekening houden met sidebar */
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tijdlijn */
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* De rode lijn */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: crimson;
+  z-index: 0;
+}
+
+/* Punten op de tijdlijn */
+.timeline-point {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  top: 190px;
+}
+
+.timeline-point .label {
+  background: #eee;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.timeline-point .detail {
+  display: none;
+  background: #222;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  position: absolute;
+  top: 190px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* Detail zichtbaar als actief */
+.timeline-point.active .detail {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

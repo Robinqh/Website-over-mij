@@ -25,3 +25,15 @@ document.querySelectorAll('.link-section, .topbar button').forEach(button => {
     }
   });
 });
+
+
+  function showDetail(index) {
+    const points = document.querySelectorAll('.timeline-point');
+    points.forEach((p, i) => {
+      if (i === index) {
+        p.classList.toggle('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+  }
