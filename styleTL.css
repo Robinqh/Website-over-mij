@@ -93,21 +93,24 @@ button {
 }
 
 .sidebar {
-  position: fixed;
-  top: 70px; /* onder topbar */
-  bottom: 0;
   width: 75px;
-  background: linear-gradient(
-    to bottom,
-    #8b7d6b,
-    #a3907a,
-    #8b7d6b
-  );
+  height: 100vh;
+  background: linear-gradient(to bottom, #8b7d6b, #a3907a, #8b7d6b);
   box-shadow: inset 2px 0 5px rgba(255, 255, 255, 0.2),
               inset -2px 0 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
-/* Vertikale grooves */
+.left-sidebar {
+  left: 0;
+}
+
+.right-sidebar {
+  right: 0;
+}
+
 .sidebar::before {
   content: "";
   position: absolute;
@@ -115,19 +118,17 @@ button {
   bottom: 5px;
   left: 10px;
   right: 10px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.15),
-      rgba(255, 255, 255, 0.15) 2px,
-      transparent 2px,
-      transparent 6px
-    );
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15) 2px,
+    transparent 2px,
+    transparent 6px
+  );
   border-radius: 10px;
   pointer-events: none;
 }
 
-/* Top “capital” */
 .sidebar.left-sidebar::after,
 .sidebar.right-sidebar::after {
   content: "";
@@ -143,10 +144,11 @@ button {
 }
 
 .main-content {
-  margin-left: 75px; /* ruimte voor sidebar */
-  padding-top: 80px;                  
-  overflow-y: auto;
-  flex-grow: 1;
+  width: calc(100vw - 150px);
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
 }
 
 .quote-below-nav {

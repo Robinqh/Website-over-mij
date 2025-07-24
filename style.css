@@ -4,11 +4,15 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  margin: 0;
+  padding: 0;
   background-color: gray;
   text-align: center;
   font-family: Arial, sans-serif;
-  overflow:  hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 button {
@@ -112,7 +116,7 @@ button {
 }
 
 .sidebar {
-  width: 75px; /* much smaller width */
+  width: 75px;
   background: linear-gradient(
     to bottom,
     #8b7d6b,
@@ -121,7 +125,18 @@ button {
   ); /* stone-like gradient */
   box-shadow: inset 2px 0 5px rgba(255, 255, 255, 0.2), 
               inset -2px 0 5px rgba(0, 0, 0, 0.3);
-  position: relative;
+  position: fixed;
+  height: 100vh;
+  z-index: 900;
+  top: 0;
+}
+
+.left-sidebar {
+    left: 0;
+}
+
+.right-sidebar {
+    right: 0;
 }
 
 /* Add some vertical grooves for that column texture */
@@ -261,21 +276,23 @@ button {
   margin: 0;
 }
 
-.education-split {
+.education-split,.creations-split {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin: 30px 0;
+  gap: 15px;
+  max-width: 90vw;
+  margin: 30px auto;
+  padding: 0 10px;
 }
 
-.education-split section {
+.education-split section,.creations-split section {
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.education-split h2 {
+.education-split h2,.creations-split h2 {
   margin-bottom: 15px;
   border-bottom: 2px solid #a38643;
   padding-bottom: 8px;
@@ -283,28 +300,38 @@ button {
   color: #6b5e3c;
 }
 
-.education-split b {
+.education-split b,.creations-split b {
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
 
-.education-split h4, ul {
+.education-split h4, ul,.creations-split h4, ul {
   margin-top: 5px;
   margin-bottom: 15px;
   font-weight: normal;
   font-style: italic;
   color: #444;
+  font-size: 1.4em;
+}
+.education-split h5, ul,.creations-split h5, ul {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  font-style: italic;
+  color: #444;
+  font-size: 1.2em;
 }
 
-/* Responsive: stack on small screens */
+
 @media (max-width: 600px) {
-  .education-split {
+  .education-split, .creations-split {
     grid-template-columns: 1fr;
   }
 }
 
 strong, b {
   font-weight: bold;
+  font-style: italic;
   font-size: 1.4em; 
 }
 
@@ -314,4 +341,3 @@ strong, b {
   margin-left: 0;               /* remove default left margin */
   text-align: left;
 }
-
